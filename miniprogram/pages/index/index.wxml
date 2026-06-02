@@ -7,12 +7,12 @@
         <text class="title">装机配置清单</text>
       </view>
     </view>
-    <view class="cart-pill tap-target" bindtap="openCart" hover-class="tap-press" hover-stay-time="80">
+    <view class="cart-pill tap-target" bindtap="openCart" hover-class="tap-press" hover-start-time="0" hover-stay-time="120">
       <text class="cart-count">{{cartCount}} 件</text>
       <text class="cart-label">￥{{cartTotal}}</text>
     </view>
   </view>
-  <view class="admin-entry tap-target" bindtap="goAdmin" hover-class="tap-press" hover-stay-time="80">小程序后台</view>
+  <view class="admin-entry tap-target" bindtap="goAdmin" hover-class="tap-press" hover-start-time="0" hover-stay-time="120">小程序后台</view>
   <view class="shop-layout">
     <view class="category-nav">
       <view
@@ -22,7 +22,7 @@
         bindtap="selectCategory"
         data-name="{{item.name}}"
         hover-class="tap-press"
-        hover-stay-time="80"
+        hover-start-time="0" hover-stay-time="120"
       >
         <text class="tab-name">{{item.name}}</text>
         <text class="tab-count">{{item.count}}</text>
@@ -51,7 +51,7 @@
           <text class="description">{{item['硬件描述']}}</text>
           <view class="product-actions">
             <text class="source">商品信息</text>
-            <view class="add tap-target" bindtap="addToCart" data-id="{{item.id}}" hover-class="tap-press" hover-stay-time="80">加入</view>
+            <view class="add tap-target" bindtap="addToCart" data-id="{{item.id}}" hover-class="tap-press" hover-start-time="0" hover-stay-time="120">加入</view>
           </view>
         </view>
       </view>
@@ -62,7 +62,7 @@
     <view class="drawer" catchtap="noop">
       <view class="drawer-header">
         <text class="drawer-title">购物车</text>
-        <view class="close tap-target" bindtap="closeCart" hover-class="tap-press" hover-stay-time="80">关闭</view>
+        <view class="close tap-target" bindtap="closeCart" hover-class="tap-press" hover-start-time="0" hover-stay-time="120">关闭</view>
       </view>
       <view wx:if="{{cartItems.length === 0}}" class="empty">还没有选择硬件</view>
       <view wx:for="{{cartItems}}" wx:key="id" class="cart-item">
@@ -75,15 +75,15 @@
           <text class="cart-line-qty">x {{item.quantity}}</text>
         </view>
         <view class="quantity">
-          <view class="step tap-target" bindtap="decreaseCart" data-id="{{item.id}}" hover-class="tap-press" hover-stay-time="80">-</view>
-          <view class="step tap-target" bindtap="increaseCart" data-id="{{item.id}}" hover-class="tap-press" hover-stay-time="80">+</view>
+          <view class="step tap-target" bindtap="decreaseCart" data-id="{{item.id}}" hover-class="tap-press" hover-start-time="0" hover-stay-time="120">-</view>
+          <view class="step tap-target" bindtap="increaseCart" data-id="{{item.id}}" hover-class="tap-press" hover-start-time="0" hover-stay-time="120">+</view>
         </view>
       </view>
       <view class="drawer-total">
         <text>合计</text>
         <text>￥{{cartTotal}}</text>
       </view>
-      <view class="submit-config tap-target" bindtap="submitConfig" hover-class="tap-press" hover-stay-time="80">提交配置</view>
+      <view class="submit-config tap-target" bindtap="submitConfig" hover-class="tap-press" hover-start-time="0" hover-stay-time="120">提交配置</view>
     </view>
   </view>
 </view>

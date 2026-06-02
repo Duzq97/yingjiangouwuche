@@ -5,8 +5,8 @@
       <text class="title">配置单后台</text>
     </view>
     <view class="header-actions">
-      <view class="clear-btn secondary" bindtap="goCatalog" hover-class="tap-press" hover-stay-time="80">商品配置</view>
-      <view class="clear-btn" bindtap="clearSubmissions" hover-class="tap-press" hover-stay-time="80">清空</view>
+      <view class="clear-btn secondary" bindtap="goCatalog" hover-class="tap-press" hover-start-time="0" hover-stay-time="120">商品配置</view>
+      <view class="clear-btn" bindtap="clearSubmissions" hover-class="tap-press" hover-start-time="0" hover-stay-time="120">清空</view>
     </view>
   </view>
 

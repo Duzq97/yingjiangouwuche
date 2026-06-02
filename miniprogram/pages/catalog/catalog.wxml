@@ -4,7 +4,7 @@
       <text class="eyebrow">小程序后台</text>
       <text class="title">商品配置</text>
     </view>
-    <view class="reset-btn" bindtap="resetCatalog" hover-class="tap-press" hover-stay-time="80">恢复默认</view>
+    <view class="reset-btn" bindtap="resetCatalog" hover-class="tap-press" hover-start-time="0" hover-stay-time="120">恢复默认</view>
   </view>
 
   <view class="form-panel">
@@ -28,7 +28,7 @@
     </view>
     <view class="field">
       <text>硬件图片</text>
-      <view class="image-uploader" bindtap="chooseImage" hover-class="tap-press" hover-stay-time="80">
+      <view class="image-uploader" bindtap="chooseImage" hover-class="tap-press" hover-start-time="0" hover-stay-time="120">
         <image class="image-preview" src="{{form['硬件图片']}}" mode="aspectFill" />
         <view class="upload-copy">
           <text>上传图片</text>
@@ -38,8 +38,8 @@
     </view>
 
     <view class="form-actions">
-      <view class="save-btn" bindtap="saveItem" hover-class="tap-press" hover-stay-time="80">{{editingIndex === -1 ? '新增商品' : '保存修改'}}</view>
-      <view class="cancel-btn" bindtap="cancelEdit" hover-class="tap-press" hover-stay-time="80">取消编辑</view>
+      <view class="save-btn" bindtap="saveItem" hover-class="tap-press" hover-start-time="0" hover-stay-time="120">{{editingIndex === -1 ? '新增商品' : '保存修改'}}</view>
+      <view class="cancel-btn" bindtap="cancelEdit" hover-class="tap-press" hover-start-time="0" hover-stay-time="120">取消编辑</view>
     </view>
   </view>
 
@@ -50,8 +50,8 @@
       <text class="catalog-desc">{{item['硬件描述']}}</text>
     </view>
     <view class="catalog-actions">
-      <view class="edit-btn" data-index="{{index}}" bindtap="editItem" hover-class="tap-press" hover-stay-time="80">编辑</view>
-      <view class="delete-btn" data-index="{{index}}" bindtap="deleteItem" hover-class="tap-press" hover-stay-time="80">删除</view>
+      <view class="edit-btn" data-index="{{index}}" bindtap="editItem" hover-class="tap-press" hover-start-time="0" hover-stay-time="120">编辑</view>
+      <view class="delete-btn" data-index="{{index}}" bindtap="deleteItem" hover-class="tap-press" hover-start-time="0" hover-stay-time="120">删除</view>
     </view>
   </view>
 </view>
