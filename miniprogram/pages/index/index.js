@@ -1,4 +1,5 @@
 const { parseCsv } = require('../../utils/csv')
+const hardwareCsv = require('../../data/hardware')
 
 const CATEGORY_ORDER = ['全部', 'CPU', '主板', '显卡', '散热器', '电源', '内存', '硬盘', '机箱', '杂项']
 const SUBMISSION_KEY = 'hardware_config_submissions'
@@ -21,7 +22,12 @@ Page({
   },
 
   loadCsvData() {
-    const csv = wx.getFileSystemManager().readFileSync('/data/hardware.csv', 'utf8')
+    let csv = hardwareCsv
+    try {
+      csv = wx.getFileSystemManager().readFileSync('/data/hardware.csv', 'utf8')
+    } catch (error) {
+      csv = hardwareCsv
+    }
     const items = parseCsv(csv)
     this.setData({ items }, () => {
       this.refreshCategoryState()
