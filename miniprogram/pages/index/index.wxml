@@ -36,7 +36,7 @@
       </view>
 
       <view wx:for="{{visibleItems}}" wx:key="id" class="product">
-        <view class="product-image product-placeholder">{{item['硬件分类']}}</view>
+        <image class="product-image" src="{{item['硬件图片']}}" mode="aspectFill" />
         <view class="product-body">
           <view class="product-row">
             <view class="name-block">
