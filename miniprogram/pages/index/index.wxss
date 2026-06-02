@@ -220,6 +220,15 @@
   border: 3rpx solid #f3d6b6;
 }
 
+.product-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c2410c;
+  font-size: 42rpx;
+  font-weight: 700;
+}
+
 .product-body {
   min-width: 0;
 }
