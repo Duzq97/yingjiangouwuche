@@ -66,6 +66,7 @@
   font-weight: 700;
   text-align: center;
   box-shadow: 0 4rpx 0 #9a3412;
+  transition: transform 120ms ease, opacity 120ms ease, box-shadow 120ms ease;
 }
 
 .clear-btn.secondary {

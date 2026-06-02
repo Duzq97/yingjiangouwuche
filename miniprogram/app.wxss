@@ -9,3 +9,8 @@ page {
   height: 72rpx;
   border-radius: 8rpx;
 }
+
+.tap-press {
+  transform: translateY(4rpx) scale(0.97);
+  opacity: 0.88;
+}

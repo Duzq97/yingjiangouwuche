@@ -64,6 +64,7 @@
   font-size: 24rpx;
   font-weight: 700;
   text-align: center;
+  transition: transform 120ms ease, opacity 120ms ease, box-shadow 120ms ease;
 }
 
 .reset-btn,
@@ -122,6 +123,7 @@
   border: 2rpx dashed #fdba74;
   border-radius: 8rpx;
   background: #fffaf5;
+  transition: transform 120ms ease, opacity 120ms ease;
 }
 
 .image-preview {
