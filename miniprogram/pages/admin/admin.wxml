@@ -4,7 +4,10 @@
       <text class="eyebrow">会稳电脑</text>
       <text class="title">配置单后台</text>
     </view>
-    <view class="clear-btn" bindtap="clearSubmissions">清空</view>
+    <view class="header-actions">
+      <view class="clear-btn secondary" bindtap="goCatalog">商品配置</view>
+      <view class="clear-btn" bindtap="clearSubmissions">清空</view>
+    </view>
   </view>
 
   <view wx:if="{{submissions.length === 0}}" class="empty">

@@ -1,5 +1,6 @@
 const CATEGORY_ORDER = ['全部', 'CPU', '主板', '显卡', '散热器', '电源', '内存', '硬盘', '机箱', '杂项']
 const SUBMISSION_KEY = 'hardware_config_submissions'
+const CATALOG_KEY = 'hardware_catalog_items'
 const LOCAL_IMAGE = '/assets/huiwen-computer-icon.png'
 
 const DEFAULT_ITEMS = [
@@ -47,8 +48,35 @@ Page({
   },
 
   onLoad: function () {
-    var items = createItems()
-    this.setData({ items: items })
+    this.loadCatalogItems()
+  },
+
+  onShow: function () {
+    this.loadCatalogItems()
+  },
+
+  loadCatalogItems: function () {
+    var savedItems = wx.getStorageSync(CATALOG_KEY) || []
+    var items = savedItems.length ? savedItems.map(function (item, index) {
+      return {
+        id: String(index + 1),
+        '硬件分类': item['硬件分类'],
+        '硬件名称': item['硬件名称'],
+        '硬件描述': item['硬件描述'],
+        '硬件价格': String(item['硬件价格']),
+        '硬件图片': item['硬件图片'] || LOCAL_IMAGE,
+        price: Number(item['硬件价格']) || 0
+      }
+    }) : createItems()
+
+    this.setData({
+      items: items,
+      activeCategory: '全部',
+      cart: {},
+      cartItems: [],
+      cartCount: 0,
+      cartTotal: 0
+    })
     this.refreshCategoryState()
     this.applyCategory()
   },

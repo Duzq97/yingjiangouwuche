@@ -14,6 +14,12 @@
   gap: 16rpx;
 }
 
+.header-actions {
+  display: flex;
+  gap: 10rpx;
+  flex: none;
+}
+
 .admin-header {
   padding: 22rpx 20rpx;
   margin-bottom: 18rpx;
@@ -60,6 +66,13 @@
   font-weight: 700;
   text-align: center;
   box-shadow: 0 4rpx 0 #9a3412;
+}
+
+.clear-btn.secondary {
+  border-color: #fdba74;
+  background: #ffedd5;
+  color: #c2410c;
+  box-shadow: 0 4rpx 0 rgba(194, 65, 12, 0.14);
 }
 
 .empty {

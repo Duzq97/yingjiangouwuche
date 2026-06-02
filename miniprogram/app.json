@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/admin/admin"
+    "pages/admin/admin",
+    "pages/catalog/catalog"
   ],
   "window": {
     "navigationBarTitleText": "会稳电脑",

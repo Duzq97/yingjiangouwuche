@@ -1,0 +1,51 @@
+<view class="catalog-page">
+  <view class="catalog-header">
+    <view>
+      <text class="eyebrow">小程序后台</text>
+      <text class="title">商品配置</text>
+    </view>
+    <view class="reset-btn" bindtap="resetCatalog">恢复默认</view>
+  </view>
+
+  <view class="form-panel">
+    <view class="field">
+      <text>硬件分类</text>
+      <picker mode="selector" range="{{categoryOptions}}" value="{{categoryIndex}}" bindchange="changeCategory">
+        <view class="picker-value">{{form['硬件分类']}}</view>
+      </picker>
+    </view>
+    <view class="field">
+      <text>硬件名称</text>
+      <input value="{{form['硬件名称']}}" data-key="硬件名称" bindinput="updateForm" placeholder="商品名称" />
+    </view>
+    <view class="field">
+      <text>硬件描述</text>
+      <input value="{{form['硬件描述']}}" data-key="硬件描述" bindinput="updateForm" placeholder="商品描述" />
+    </view>
+    <view class="field">
+      <text>硬件价格</text>
+      <input type="number" value="{{form['硬件价格']}}" data-key="硬件价格" bindinput="updateForm" placeholder="不要写 ￥" />
+    </view>
+    <view class="field">
+      <text>硬件图片</text>
+      <input value="{{form['硬件图片']}}" data-key="硬件图片" bindinput="updateForm" placeholder="图片路径或 URL" />
+    </view>
+
+    <view class="form-actions">
+      <view class="save-btn" bindtap="saveItem">{{editingIndex === -1 ? '新增商品' : '保存修改'}}</view>
+      <view class="cancel-btn" bindtap="cancelEdit">取消编辑</view>
+    </view>
+  </view>
+
+  <view wx:for="{{items}}" wx:key="id" class="catalog-card">
+    <view class="catalog-info">
+      <text class="catalog-name">{{item['硬件名称']}}</text>
+      <text class="catalog-meta">{{item['硬件分类']}} / ￥{{item['硬件价格']}}</text>
+      <text class="catalog-desc">{{item['硬件描述']}}</text>
+    </view>
+    <view class="catalog-actions">
+      <view class="edit-btn" data-index="{{index}}" bindtap="editItem">编辑</view>
+      <view class="delete-btn" data-index="{{index}}" bindtap="deleteItem">删除</view>
+    </view>
+  </view>
+</view>

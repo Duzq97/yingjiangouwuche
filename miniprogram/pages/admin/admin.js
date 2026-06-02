@@ -36,6 +36,12 @@ Page({
     this.setData({ submissions: submissions })
   },
 
+  goCatalog: function () {
+    wx.navigateTo({
+      url: '/pages/catalog/catalog'
+    })
+  },
+
   clearSubmissions: function () {
     var self = this
     wx.showModal({

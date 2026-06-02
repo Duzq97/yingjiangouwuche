@@ -1,0 +1,142 @@
+.catalog-page {
+  min-height: 100vh;
+  padding: 20rpx 18rpx 80rpx;
+  background: #fff7ed;
+  box-sizing: border-box;
+}
+
+.catalog-header,
+.form-actions,
+.catalog-card,
+.catalog-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14rpx;
+}
+
+.catalog-header,
+.form-panel,
+.catalog-card {
+  border: 3rpx solid #f3d6b6;
+  border-radius: 8rpx;
+  background: #ffffff;
+  box-shadow: 0 4rpx 0 rgba(194, 65, 12, 0.10);
+}
+
+.catalog-header {
+  padding: 22rpx 20rpx;
+  margin-bottom: 16rpx;
+}
+
+.eyebrow,
+.title,
+.field text,
+.catalog-name,
+.catalog-meta,
+.catalog-desc {
+  display: block;
+}
+
+.eyebrow,
+.field text,
+.catalog-meta,
+.catalog-desc {
+  color: #8a6a48;
+  font-size: 22rpx;
+}
+
+.title {
+  margin-top: 4rpx;
+  color: #3b260f;
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+.reset-btn,
+.save-btn,
+.cancel-btn,
+.edit-btn,
+.delete-btn {
+  min-width: 92rpx;
+  padding: 12rpx 16rpx;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  font-weight: 700;
+  text-align: center;
+}
+
+.reset-btn,
+.save-btn {
+  border: 3rpx solid #9a3412;
+  background: #f97316;
+  color: #ffffff;
+  box-shadow: 0 4rpx 0 #9a3412;
+}
+
+.cancel-btn,
+.edit-btn {
+  border: 3rpx solid #fdba74;
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+.delete-btn {
+  border: 3rpx solid #f3d6b6;
+  background: #fff7ed;
+  color: #8a6a48;
+}
+
+.form-panel {
+  padding: 18rpx;
+  margin-bottom: 16rpx;
+}
+
+.field {
+  margin-bottom: 14rpx;
+}
+
+.field text {
+  margin-bottom: 6rpx;
+  font-weight: 700;
+}
+
+.field input,
+.picker-value {
+  height: 64rpx;
+  line-height: 64rpx;
+  padding: 0 16rpx;
+  border: 2rpx solid #f3d6b6;
+  border-radius: 8rpx;
+  background: #fffaf5;
+  color: #3b260f;
+  font-size: 25rpx;
+  box-sizing: border-box;
+}
+
+.catalog-card {
+  padding: 16rpx;
+  margin-bottom: 14rpx;
+}
+
+.catalog-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.catalog-name {
+  color: #3b260f;
+  font-size: 27rpx;
+  font-weight: 700;
+}
+
+.catalog-desc {
+  margin-top: 4rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.catalog-actions {
+  flex: none;
+}
