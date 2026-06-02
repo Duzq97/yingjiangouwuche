@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>商品数据配置</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app admin-app">
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">后台页面</span>
+          <h1>商品数据配置</h1>
+        </div>
+        <a class="cart-button admin-home" href="./admin.html">
+          <span>返回</span>
+          <strong>后台</strong>
+        </a>
+      </header>
+
+      <section class="admin-panel">
+        <div class="admin-head">
+          <div>
+            <span class="eyebrow">字段格式与 CSV 一致</span>
+            <h2>硬件分类、硬件名称、硬件描述、硬件价格、硬件图片</h2>
+          </div>
+          <button class="clear" id="resetCatalog" type="button">恢复 CSV 默认</button>
+        </div>
+
+        <form class="config-form" id="catalogForm">
+          <input type="hidden" id="editIndex" value="" />
+          <label>
+            <span>硬件分类</span>
+            <select id="categoryInput" required>
+              <option value="CPU">CPU</option>
+              <option value="主板">主板</option>
+              <option value="显卡">显卡</option>
+              <option value="散热器">散热器</option>
+              <option value="电源">电源</option>
+              <option value="内存">内存</option>
+              <option value="硬盘">硬盘</option>
+              <option value="机箱">机箱</option>
+              <option value="杂项">杂项</option>
+            </select>
+          </label>
+          <label>
+            <span>硬件名称</span>
+            <input id="nameInput" type="text" required placeholder="例如：Intel Core i5" />
+          </label>
+          <label class="wide-field">
+            <span>硬件描述</span>
+            <input id="descriptionInput" type="text" required placeholder="商品描述" />
+          </label>
+          <label>
+            <span>硬件价格</span>
+            <input id="priceInput" type="number" min="0" step="1" required placeholder="不要写 ￥" />
+          </label>
+          <label class="wide-field">
+            <span>硬件图片</span>
+            <input id="imageInput" type="url" required placeholder="图片 URL" />
+          </label>
+          <div class="form-actions">
+            <button class="submit-config" type="submit">保存商品</button>
+            <button class="clear" id="cancelEdit" type="button">取消编辑</button>
+          </div>
+        </form>
+
+        <div class="catalog-table-wrap">
+          <table class="catalog-table">
+            <thead>
+              <tr>
+                <th>硬件分类</th>
+                <th>硬件名称</th>
+                <th>硬件描述</th>
+                <th>硬件价格</th>
+                <th>硬件图片</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody id="catalogRows"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="./config.js"></script>
+  </body>
+</html>

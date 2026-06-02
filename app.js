@@ -8,6 +8,8 @@ const state = {
 }
 
 const SUBMISSION_KEY = 'hardware_config_submissions'
+const CATALOG_KEY = 'hardware_catalog_items'
+const CSV_PATHS = ['./miniprogram/data/hardware.csv', '../miniprogram/data/hardware.csv']
 
 function parseCsv(text) {
   const rows = []
@@ -81,6 +83,14 @@ function writeSubmissions(submissions) {
   localStorage.setItem(SUBMISSION_KEY, JSON.stringify(submissions))
 }
 
+function readCatalogItems() {
+  try {
+    return JSON.parse(localStorage.getItem(CATALOG_KEY) || '[]')
+  } catch (error) {
+    return []
+  }
+}
+
 function getVisibleItems() {
   return state.category === '全部'
     ? state.items
@@ -115,7 +125,7 @@ function renderTabs() {
 
 function renderProducts() {
   const visible = getVisibleItems()
-  document.getElementById('categoryTitle').textContent = state.category === '全部' ? '全部装备' : state.category
+  document.getElementById('categoryTitle').textContent = state.category === '全部' ? '全部商品' : state.category
   document.getElementById('resultCount').textContent = `${visible.length} 项`
 
   document.getElementById('products').innerHTML = visible.map((item) => `
@@ -133,8 +143,8 @@ function renderProducts() {
         </div>
         <p>${item['硬件描述']}</p>
         <div class="product-actions">
-          <span>装备档案</span>
-          <button type="button" data-add="${item.id}">加入背包</button>
+          <span>商品信息</span>
+          <button type="button" data-add="${item.id}">加入购物车</button>
         </div>
       </div>
     </article>
@@ -209,7 +219,7 @@ document.getElementById('clearCart').addEventListener('click', () => {
 document.getElementById('submitConfig').addEventListener('click', () => {
   const rows = getCartRows()
   if (!rows.length) {
-    window.alert('请先选择硬件再提交配置')
+    window.alert('请先选择商品再提交配置')
     return
   }
 
@@ -248,9 +258,31 @@ document.getElementById('cartButton').addEventListener('click', () => {
   document.getElementById('cart').scrollIntoView({ behavior: 'smooth', block: 'start' })
 })
 
-fetch('./miniprogram/data/hardware.csv', { cache: 'no-store' })
-  .then((response) => response.arrayBuffer())
-  .then((buffer) => {
-    state.items = parseCsv(decodeCsv(buffer))
-    render()
-  })
+async function fetchCsvText() {
+  for (const path of CSV_PATHS) {
+    try {
+      const response = await fetch(path, { cache: 'no-store' })
+      if (!response.ok) continue
+      return decodeCsv(await response.arrayBuffer())
+    } catch (error) {
+      // The local preview and GitHub Pages deployment use different roots.
+    }
+  }
+  throw new Error('无法读取 CSV 数据')
+}
+
+async function loadCatalog() {
+  const configuredItems = readCatalogItems()
+  if (configuredItems.length) {
+    state.items = configuredItems.map((item, index) => ({
+      id: String(index + 1),
+      ...item,
+      price: Number(item['硬件价格']) || 0
+    }))
+  } else {
+    state.items = parseCsv(await fetchCsvText())
+  }
+  render()
+}
+
+loadCatalog()

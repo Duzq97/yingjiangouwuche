@@ -517,6 +517,20 @@ h1 {
   gap: 16px;
 }
 
+.admin-actions,
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.admin-action-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .admin-head {
   margin-bottom: 16px;
 }
@@ -587,6 +601,118 @@ h1 {
 
 .admin-empty {
   padding: 34px 0;
+}
+
+.config-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 14px;
+  margin-bottom: 16px;
+  border: 2px solid #f3d6b6;
+  border-radius: 8px;
+  background: #fffaf5;
+}
+
+.config-form label,
+.config-form label span {
+  display: block;
+}
+
+.config-form label span {
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.config-form input,
+.config-form select {
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+  border: 2px solid #f3d6b6;
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--ink);
+  font: inherit;
+}
+
+.wide-field,
+.form-actions {
+  grid-column: 1 / -1;
+}
+
+.form-actions .submit-config {
+  width: auto;
+  min-width: 140px;
+  margin-top: 0;
+}
+
+.catalog-table-wrap {
+  overflow-x: auto;
+}
+
+.catalog-table {
+  width: 100%;
+  min-width: 920px;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+
+.catalog-table th,
+.catalog-table td {
+  padding: 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.catalog-table th {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.catalog-table td {
+  border-top: 2px solid #f3d6b6;
+  border-bottom: 2px solid #f3d6b6;
+  background: #ffffff;
+}
+
+.catalog-table td:first-child {
+  border-left: 2px solid #f3d6b6;
+  border-radius: 8px 0 0 8px;
+}
+
+.catalog-table td:last-child {
+  border-right: 2px solid #f3d6b6;
+  border-radius: 0 8px 8px 0;
+  white-space: nowrap;
+}
+
+.image-url {
+  display: block;
+  max-width: 260px;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.table-action {
+  height: 32px;
+  margin-right: 6px;
+  padding: 0 10px;
+  border: 2px solid #fdba74;
+  border-radius: 8px;
+  background: #fff7ed;
+  color: var(--orange-deep);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.table-action.danger {
+  background: #ffedd5;
 }
 
 @media (max-width: 1040px) {
@@ -675,5 +801,9 @@ h1 {
   .submission-head {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .config-form {
+    grid-template-columns: 1fr;
   }
 }

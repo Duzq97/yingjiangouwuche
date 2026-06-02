@@ -37,7 +37,7 @@ function renderSubmissions() {
           <strong>${formatPrice(submission.totalPrice)}</strong>
         </div>
         <div class="submission-meta">
-          <span>${submission.totalCount} 件装备</span>
+          <span>${submission.totalCount} 件商品</span>
           <span>${submission.items.length} 个条目</span>
         </div>
         <div class="submission-items">

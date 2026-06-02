@@ -4,7 +4,7 @@
       <image class="brand-icon" src="/assets/huiwen-computer-icon.png" mode="aspectFit" />
       <view class="brand-copy">
         <text class="eyebrow">会稳电脑</text>
-        <text class="title">装机装备清单</text>
+        <text class="title">装机商品清单</text>
       </view>
     </view>
     <view class="cart-pill" bindtap="openCart">
@@ -14,7 +14,7 @@
   </view>
 
   <view class="shop-layout">
-    <scroll-view class="category-nav" scroll-y enhanced show-scrollbar="{{false}}">
+    <view class="category-nav">
       <view
         wx:for="{{categories}}"
         wx:key="name"
@@ -25,13 +25,13 @@
         <text class="tab-name">{{item.name}}</text>
         <text class="tab-count">{{item.count}}</text>
       </view>
-    </scroll-view>
+    </view>
 
-    <scroll-view class="content" scroll-y enhanced show-scrollbar="{{false}}">
+    <view class="content">
       <view class="section-head">
         <view>
           <text class="eyebrow">当前分类</text>
-          <text class="section-title">{{activeCategory === '全部' ? '全部装备' : activeCategory}}</text>
+          <text class="section-title">{{activeCategory === '全部' ? '全部商品' : activeCategory}}</text>
         </view>
         <text class="result-count">{{visibleItems.length}} 项</text>
       </view>
@@ -48,12 +48,12 @@
           </view>
           <text class="description">{{item['硬件描述']}}</text>
           <view class="product-actions">
-            <text class="source">装备档案</text>
+            <text class="source">商品信息</text>
             <button class="add" bindtap="addToCart" data-id="{{item.id}}">加入</button>
           </view>
         </view>
       </view>
-    </scroll-view>
+    </view>
   </view>
 
   <view wx:if="{{cartVisible}}" class="drawer-mask" bindtap="closeCart">
