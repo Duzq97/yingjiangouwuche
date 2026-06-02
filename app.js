@@ -9,63 +9,6 @@ const state = {
 
 const SUBMISSION_KEY = 'hardware_config_submissions'
 const CATALOG_KEY = 'hardware_catalog_items'
-const CSV_PATHS = ['./miniprogram/data/hardware.csv', '../miniprogram/data/hardware.csv']
-
-function parseCsv(text) {
-  const rows = []
-  let row = []
-  let field = ''
-  let inQuotes = false
-
-  for (let i = 0; i < text.length; i += 1) {
-    const char = text[i]
-    const next = text[i + 1]
-
-    if (char === '"' && inQuotes && next === '"') {
-      field += '"'
-      i += 1
-    } else if (char === '"') {
-      inQuotes = !inQuotes
-    } else if (char === ',' && !inQuotes) {
-      row.push(field.trim())
-      field = ''
-    } else if ((char === '\n' || char === '\r') && !inQuotes) {
-      if (char === '\r' && next === '\n') i += 1
-      row.push(field.trim())
-      if (row.some(Boolean)) rows.push(row)
-      row = []
-      field = ''
-    } else {
-      field += char
-    }
-  }
-
-  row.push(field.trim())
-  if (row.some(Boolean)) rows.push(row)
-
-  const headers = rows.shift()
-  return rows.map((values, index) => {
-    const item = { id: String(index + 1) }
-    headers.forEach((header, headerIndex) => {
-      item[header] = values[headerIndex] || ''
-    })
-    item.price = Number(item['硬件价格']) || 0
-    return item
-  })
-}
-
-function decodeCsv(buffer) {
-  const utf8Text = new TextDecoder('utf-8').decode(buffer)
-  if (utf8Text.includes('硬件分类') && utf8Text.includes('硬件名称')) {
-    return utf8Text
-  }
-
-  try {
-    return new TextDecoder('gb18030').decode(buffer)
-  } catch (error) {
-    return utf8Text
-  }
-}
 
 function formatPrice(value) {
   return `￥${value.toLocaleString('zh-CN')}`
@@ -258,30 +201,14 @@ document.getElementById('cartButton').addEventListener('click', () => {
   document.getElementById('cart').scrollIntoView({ behavior: 'smooth', block: 'start' })
 })
 
-async function fetchCsvText() {
-  for (const path of CSV_PATHS) {
-    try {
-      const response = await fetch(path, { cache: 'no-store' })
-      if (!response.ok) continue
-      return decodeCsv(await response.arrayBuffer())
-    } catch (error) {
-      // The local preview and GitHub Pages deployment use different roots.
-    }
-  }
-  throw new Error('无法读取 CSV 数据')
-}
-
-async function loadCatalog() {
+function loadCatalog() {
   const configuredItems = readCatalogItems()
-  if (configuredItems.length) {
-    state.items = configuredItems.map((item, index) => ({
-      id: String(index + 1),
-      ...item,
-      price: Number(item['硬件价格']) || 0
-    }))
-  } else {
-    state.items = parseCsv(await fetchCsvText())
-  }
+  const sourceItems = configuredItems.length ? configuredItems : window.DEFAULT_CATALOG_ITEMS
+  state.items = sourceItems.map((item, index) => ({
+    id: String(index + 1),
+    ...item,
+    price: Number(item['硬件价格']) || 0
+  }))
   render()
 }
 

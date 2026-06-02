@@ -1,61 +1,6 @@
 const CATALOG_KEY = 'hardware_catalog_items'
-const CSV_PATHS = ['./miniprogram/data/hardware.csv', '../miniprogram/data/hardware.csv']
 
 let catalogItems = []
-
-function parseCsv(text) {
-  const rows = []
-  let row = []
-  let field = ''
-  let inQuotes = false
-
-  for (let i = 0; i < text.length; i += 1) {
-    const char = text[i]
-    const next = text[i + 1]
-
-    if (char === '"' && inQuotes && next === '"') {
-      field += '"'
-      i += 1
-    } else if (char === '"') {
-      inQuotes = !inQuotes
-    } else if (char === ',' && !inQuotes) {
-      row.push(field.trim())
-      field = ''
-    } else if ((char === '\n' || char === '\r') && !inQuotes) {
-      if (char === '\r' && next === '\n') i += 1
-      row.push(field.trim())
-      if (row.some(Boolean)) rows.push(row)
-      row = []
-      field = ''
-    } else {
-      field += char
-    }
-  }
-
-  row.push(field.trim())
-  if (row.some(Boolean)) rows.push(row)
-
-  const headers = rows.shift() || []
-  return rows.map((values) => {
-    const item = {}
-    headers.forEach((header, index) => {
-      item[header] = values[index] || ''
-    })
-    return item
-  })
-}
-
-function decodeCsv(buffer) {
-  const utf8Text = new TextDecoder('utf-8').decode(buffer)
-  if (utf8Text.includes('硬件分类') && utf8Text.includes('硬件名称')) {
-    return utf8Text
-  }
-  try {
-    return new TextDecoder('gb18030').decode(buffer)
-  } catch (error) {
-    return utf8Text
-  }
-}
 
 function readCatalog() {
   try {
@@ -67,19 +12,6 @@ function readCatalog() {
 
 function writeCatalog() {
   localStorage.setItem(CATALOG_KEY, JSON.stringify(catalogItems))
-}
-
-async function fetchCsvText() {
-  for (const path of CSV_PATHS) {
-    try {
-      const response = await fetch(path, { cache: 'no-store' })
-      if (!response.ok) continue
-      return decodeCsv(await response.arrayBuffer())
-    } catch (error) {
-      // Try the next path.
-    }
-  }
-  throw new Error('无法读取 CSV 数据')
 }
 
 function getFormItem() {
@@ -153,17 +85,17 @@ document.getElementById('catalogRows').addEventListener('click', (event) => {
   }
 })
 
-document.getElementById('resetCatalog').addEventListener('click', async () => {
-  if (!window.confirm('确定恢复 CSV 默认数据？当前后台配置会被清空。')) return
+document.getElementById('resetCatalog').addEventListener('click', () => {
+  if (!window.confirm('确定恢复默认数据？当前后台配置会被清空。')) return
   localStorage.removeItem(CATALOG_KEY)
-  catalogItems = parseCsv(await fetchCsvText())
+  catalogItems = [...window.DEFAULT_CATALOG_ITEMS]
   renderCatalog()
 })
 
-async function init() {
+function init() {
   catalogItems = readCatalog()
   if (!catalogItems.length) {
-    catalogItems = parseCsv(await fetchCsvText())
+    catalogItems = [...window.DEFAULT_CATALOG_ITEMS]
   }
   renderCatalog()
 }

@@ -7,7 +7,7 @@
         <text class="title">装机商品清单</text>
       </view>
     </view>
-    <view class="cart-pill" bindtap="openCart">
+    <view class="cart-pill tap-target" catchtap="openCart">
       <text class="cart-count">{{cartCount}} 件</text>
       <text class="cart-label">￥{{cartTotal}}</text>
     </view>
@@ -19,7 +19,7 @@
         wx:for="{{categories}}"
         wx:key="name"
         class="tab {{activeCategory === item.name ? 'active' : ''}}"
-        bindtap="selectCategory"
+        catchtap="selectCategory"
         data-name="{{item.name}}"
       >
         <text class="tab-name">{{item.name}}</text>
@@ -49,18 +49,18 @@
           <text class="description">{{item['硬件描述']}}</text>
           <view class="product-actions">
             <text class="source">商品信息</text>
-            <button class="add" bindtap="addToCart" data-id="{{item.id}}">加入</button>
+            <view class="add tap-target" catchtap="addToCart" data-id="{{item.id}}">加入</view>
           </view>
         </view>
       </view>
     </view>
   </view>
 
-  <view wx:if="{{cartVisible}}" class="drawer-mask" bindtap="closeCart">
+  <view wx:if="{{cartVisible}}" class="drawer-mask" catchtap="closeCart">
     <view class="drawer" catchtap="noop">
       <view class="drawer-header">
         <text class="drawer-title">购物车</text>
-        <text class="close" bindtap="closeCart">关闭</text>
+        <text class="close tap-target" catchtap="closeCart">关闭</text>
       </view>
       <view wx:if="{{cartItems.length === 0}}" class="empty">还没有选择硬件</view>
       <view wx:for="{{cartItems}}" wx:key="id" class="cart-item">
@@ -73,15 +73,15 @@
           <text class="cart-line-qty">x {{item.quantity}}</text>
         </view>
         <view class="quantity">
-          <button class="step" bindtap="decreaseCart" data-id="{{item.id}}">-</button>
-          <button class="step" bindtap="increaseCart" data-id="{{item.id}}">+</button>
+          <view class="step tap-target" catchtap="decreaseCart" data-id="{{item.id}}">-</view>
+          <view class="step tap-target" catchtap="increaseCart" data-id="{{item.id}}">+</view>
         </view>
       </view>
       <view class="drawer-total">
         <text>合计</text>
         <text>￥{{cartTotal}}</text>
       </view>
-      <button class="submit-config" bindtap="submitConfig">提交配置</button>
+      <view class="submit-config tap-target" catchtap="submitConfig">提交配置</view>
     </view>
   </view>
 </view>
