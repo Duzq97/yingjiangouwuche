@@ -638,6 +638,37 @@ h1 {
   font: inherit;
 }
 
+.web-image-upload {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  border: 2px dashed #fdba74;
+  border-radius: 8px;
+  background: #fffaf5;
+}
+
+.web-image-upload img {
+  width: 120px;
+  height: 90px;
+  flex: none;
+  object-fit: cover;
+  border: 2px solid #f3d6b6;
+  border-radius: 8px;
+  background: #fff7ed;
+}
+
+.web-image-upload input[type="file"] {
+  height: auto;
+  padding: 9px;
+}
+
+.web-image-upload p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
 .wide-field,
 .form-actions {
   grid-column: 1 / -1;
@@ -697,6 +728,23 @@ h1 {
   font-size: 13px;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.table-image {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 220px;
+}
+
+.table-image img {
+  width: 54px;
+  height: 42px;
+  flex: none;
+  object-fit: cover;
+  border: 2px solid #f3d6b6;
+  border-radius: 8px;
+  background: #fff7ed;
 }
 
 .table-action {

@@ -1,4 +1,5 @@
 window.DEFAULT_CATALOG_ITEMS = [
+  {"硬件分类":"套装","硬件名称":"高帧率游戏主机套装","硬件描述":"CPU、显卡、主板、内存组合方案","硬件价格":"8999","硬件图片":"https://dummyimage.com/320x240/fff7ed/c2410c&text=Bundle"},
   {"硬件分类":"CPU","硬件名称":"Intel Core i5-14600KF","硬件描述":"14核心20线程，适合高帧率游戏和内容创作","硬件价格":"2199","硬件图片":"https://dummyimage.com/320x240/e8eef7/1f2937&text=CPU"},
   {"硬件分类":"CPU","硬件名称":"AMD Ryzen 7 7800X3D","硬件描述":"大缓存游戏处理器，能效表现优秀","硬件价格":"2699","硬件图片":"https://dummyimage.com/320x240/e8eef7/1f2937&text=Ryzen"},
   {"硬件分类":"主板","硬件名称":"MSI B760M Mortar WiFi","硬件描述":"D5内存支持，WiFi 6E，接口完整","硬件价格":"1299","硬件图片":"https://dummyimage.com/320x240/e9f8f1/1f2937&text=Mainboard"},

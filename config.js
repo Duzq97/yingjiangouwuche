@@ -26,11 +26,13 @@ function getFormItem() {
 
 function setFormItem(item, index = '') {
   document.getElementById('editIndex').value = index
-  document.getElementById('categoryInput').value = item?.['硬件分类'] || 'CPU'
+  document.getElementById('categoryInput').value = item?.['硬件分类'] || '套装'
   document.getElementById('nameInput').value = item?.['硬件名称'] || ''
   document.getElementById('descriptionInput').value = item?.['硬件描述'] || ''
   document.getElementById('priceInput').value = item?.['硬件价格'] || ''
   document.getElementById('imageInput').value = item?.['硬件图片'] || ''
+  document.getElementById('imagePreview').src = item?.['硬件图片'] || ''
+  document.getElementById('imageFileInput').value = ''
 }
 
 function renderCatalog() {
@@ -40,7 +42,12 @@ function renderCatalog() {
       <td>${item['硬件名称']}</td>
       <td>${item['硬件描述']}</td>
       <td>￥${Number(item['硬件价格'] || 0).toLocaleString('zh-CN')}</td>
-      <td><span class="image-url">${item['硬件图片']}</span></td>
+      <td>
+        <div class="table-image">
+          <img src="${item['硬件图片']}" alt="${item['硬件名称']}" />
+          <span class="image-url">${item['硬件图片']}</span>
+        </div>
+      </td>
       <td>
         <button class="table-action" type="button" data-edit="${index}">编辑</button>
         <button class="table-action danger" type="button" data-delete="${index}">删除</button>
@@ -53,6 +60,11 @@ document.getElementById('catalogForm').addEventListener('submit', (event) => {
   event.preventDefault()
   const editIndex = document.getElementById('editIndex').value
   const item = getFormItem()
+
+  if (!item['硬件图片']) {
+    window.alert('请先上传 JPG、PNG 或 WebP 图片')
+    return
+  }
 
   if (editIndex === '') {
     catalogItems.unshift(item)
@@ -67,6 +79,24 @@ document.getElementById('catalogForm').addEventListener('submit', (event) => {
 
 document.getElementById('cancelEdit').addEventListener('click', () => {
   setFormItem(null)
+})
+
+document.getElementById('imageFileInput').addEventListener('change', (event) => {
+  const file = event.target.files?.[0]
+  if (!file) return
+
+  if (!/^image\/(jpeg|png|webp)$/.test(file.type)) {
+    window.alert('请选择 JPG、PNG 或 WebP 图片')
+    event.target.value = ''
+    return
+  }
+
+  const reader = new FileReader()
+  reader.onload = () => {
+    document.getElementById('imageInput').value = reader.result
+    document.getElementById('imagePreview').src = reader.result
+  }
+  reader.readAsDataURL(file)
 })
 
 document.getElementById('catalogRows').addEventListener('click', (event) => {

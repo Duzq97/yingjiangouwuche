@@ -1,4 +1,4 @@
-const CATEGORY_ORDER = ['全部', 'CPU', '主板', '显卡', '散热器', '电源', '内存', '硬盘', '机箱', '杂项']
+const CATEGORY_ORDER = ['全部', '套装', 'CPU', '主板', '显卡', '散热器', '电源', '内存', '硬盘', '机箱', '杂项']
 
 const state = {
   items: [],

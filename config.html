@@ -33,6 +33,7 @@
           <label>
             <span>硬件分类</span>
             <select id="categoryInput" required>
+              <option value="套装">套装</option>
               <option value="CPU">CPU</option>
               <option value="主板">主板</option>
               <option value="显卡">显卡</option>
@@ -58,7 +59,14 @@
           </label>
           <label class="wide-field">
             <span>硬件图片</span>
-            <input id="imageInput" type="url" required placeholder="图片 URL" />
+            <div class="web-image-upload">
+              <img id="imagePreview" src="" alt="商品图片预览" />
+              <div>
+                <input id="imageInput" type="hidden" required />
+                <input id="imageFileInput" type="file" accept="image/jpeg,image/png,image/webp" />
+                <p>支持 JPG、PNG、WebP 图片</p>
+              </div>
+            </div>
           </label>
           <div class="form-actions">
             <button class="submit-config" type="submit">保存商品</button>

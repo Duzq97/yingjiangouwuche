@@ -114,6 +114,41 @@
   box-sizing: border-box;
 }
 
+.image-uploader {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  padding: 12rpx;
+  border: 2rpx dashed #fdba74;
+  border-radius: 8rpx;
+  background: #fffaf5;
+}
+
+.image-preview {
+  width: 132rpx;
+  height: 96rpx;
+  flex: none;
+  border: 2rpx solid #f3d6b6;
+  border-radius: 8rpx;
+  background: #fff7ed;
+}
+
+.upload-copy text {
+  display: block;
+}
+
+.upload-copy text:first-child {
+  color: #c2410c;
+  font-size: 26rpx;
+  font-weight: 700;
+}
+
+.upload-copy text:last-child {
+  margin-top: 6rpx;
+  color: #8a6a48;
+  font-size: 22rpx;
+}
+
 .catalog-card {
   padding: 16rpx;
   margin-bottom: 14rpx;

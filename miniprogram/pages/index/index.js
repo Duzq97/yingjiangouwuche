@@ -1,9 +1,10 @@
-const CATEGORY_ORDER = ['全部', 'CPU', '主板', '显卡', '散热器', '电源', '内存', '硬盘', '机箱', '杂项']
+const CATEGORY_ORDER = ['全部', '套装', 'CPU', '主板', '显卡', '散热器', '电源', '内存', '硬盘', '机箱', '杂项']
 const SUBMISSION_KEY = 'hardware_config_submissions'
 const CATALOG_KEY = 'hardware_catalog_items'
 const LOCAL_IMAGE = '/assets/huiwen-computer-icon.png'
 
 const DEFAULT_ITEMS = [
+  ['套装', '高帧率游戏主机套装', 'CPU、显卡、主板、内存组合方案', 8999],
   ['CPU', 'Intel Core i5-14600KF', '14核心20线程，适合高帧率游戏和内容创作', 2199],
   ['CPU', 'AMD Ryzen 7 7800X3D', '大缓存游戏处理器，能效表现优秀', 2699],
   ['主板', 'MSI B760M Mortar WiFi', 'D5内存支持，WiFi 6E，接口完整', 1299],

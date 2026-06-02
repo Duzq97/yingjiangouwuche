@@ -28,7 +28,13 @@
     </view>
     <view class="field">
       <text>硬件图片</text>
-      <input value="{{form['硬件图片']}}" data-key="硬件图片" bindinput="updateForm" placeholder="图片路径或 URL" />
+      <view class="image-uploader" bindtap="chooseImage">
+        <image class="image-preview" src="{{form['硬件图片']}}" mode="aspectFill" />
+        <view class="upload-copy">
+          <text>上传图片</text>
+          <text>支持 JPG、PNG、WebP</text>
+        </view>
+      </view>
     </view>
 
     <view class="form-actions">
