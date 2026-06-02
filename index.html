@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>装机硬件清单预览</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">微信小程序开发预览</span>
+          <h1>装机硬件清单</h1>
+        </div>
+        <button class="cart-button" id="cartButton" type="button" aria-label="打开购物车">
+          <span id="cartCount">0 件</span>
+          <strong id="cartTotal">￥0</strong>
+        </button>
+      </header>
+
+      <section class="workspace">
+        <aside class="category-panel" aria-label="硬件分类">
+          <div class="panel-title">装备分类</div>
+          <nav class="tabs" id="tabs"></nav>
+        </aside>
+
+        <section class="product-panel">
+          <div class="section-head">
+            <div>
+              <span class="eyebrow">当前分类</span>
+              <h2 id="categoryTitle">全部装备</h2>
+            </div>
+            <span class="result-count" id="resultCount">0 项</span>
+          </div>
+          <div class="products" id="products"></div>
+        </section>
+
+        <aside class="cart collapsed" id="cart">
+          <div class="cart-head">
+            <h2>购物车</h2>
+            <div class="cart-head-right">
+              <span class="cart-inline" id="cartInline">0 件 / ￥0</span>
+              <button class="toggle-cart" id="toggleCart" type="button" aria-expanded="false">展开</button>
+            </div>
+          </div>
+          <div class="cart-body" id="cartBody">
+            <div class="cart-tools">
+              <span>已选硬件</span>
+              <button class="clear" id="clearCart" type="button">清空</button>
+            </div>
+            <div id="cartItems" class="cart-items"></div>
+            <div class="checkout">
+              <span>合计</span>
+              <strong id="checkoutTotal">￥0</strong>
+            </div>
+            <button class="submit-config" id="submitConfig" type="button">提交配置</button>
+            <a class="admin-link" href="./admin.html">进入后台查看配置单</a>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

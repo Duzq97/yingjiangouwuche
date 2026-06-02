@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>配置单后台</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app admin-app">
+      <header class="topbar">
+        <div>
+          <span class="eyebrow">后台页面</span>
+          <h1>配置单管理</h1>
+        </div>
+        <a class="cart-button admin-home" href="./index.html">
+          <span>返回</span>
+          <strong>主页面</strong>
+        </a>
+      </header>
+
+      <section class="admin-panel">
+        <div class="admin-head">
+          <div>
+            <span class="eyebrow">用户提交记录</span>
+            <h2>配置单列表</h2>
+          </div>
+          <button class="clear" id="clearSubmissions" type="button">清空记录</button>
+        </div>
+        <div id="submissionList" class="submission-list"></div>
+      </section>
+    </main>
+
+    <script src="./admin.js"></script>
+  </body>
+</html>
