@@ -7,7 +7,7 @@
         <text class="title">装机配置清单</text>
       </view>
     </view>
-    <view class="cart-pill tap-target" bind:tap="openCart">
+    <view class="cart-pill tap-target" bindtap="openCart">
       <text class="cart-count">{{cartCount}} 件</text>
       <text class="cart-label">￥{{cartTotal}}</text>
     </view>
@@ -18,7 +18,7 @@
         wx:for="{{categories}}"
         wx:key="name"
         class="tab {{activeCategory === item.name ? 'active' : ''}}"
-        bind:tap="selectCategory"
+        bindtap="selectCategory"
         data-name="{{item.name}}"
       >
         <text class="tab-name">{{item.name}}</text>
@@ -30,7 +30,7 @@
       <view class="section-head">
         <view>
           <text class="eyebrow">当前分类</text>
-          <text class="section-title">{{activeCategory === '全部' ? '全部商品' : activeCategory}}</text>
+          <text class="section-title">{{activeCategoryLabel}}</text>
         </view>
         <text class="result-count">{{visibleItems.length}} 项</text>
       </view>
@@ -48,18 +48,18 @@
           <text class="description">{{item['硬件描述']}}</text>
           <view class="product-actions">
             <text class="source">商品信息</text>
-            <view class="add tap-target" bind:tap="addToCart" data-id="{{item.id}}">加入</view>
+            <view class="add tap-target" bindtap="addToCart" data-id="{{item.id}}">加入</view>
           </view>
         </view>
       </view>
     </view>
   </view>
 
-  <view wx:if="{{cartVisible}}" class="drawer-mask" bind:tap="closeCart">
-    <view class="drawer" catch:tap="noop">
+  <view wx:if="{{cartVisible}}" class="drawer-mask" bindtap="closeCart">
+    <view class="drawer" catchtap="noop">
       <view class="drawer-header">
         <text class="drawer-title">购物车</text>
-        <text class="close tap-target" bind:tap="closeCart">关闭</text>
+        <text class="close tap-target" bindtap="closeCart">关闭</text>
       </view>
       <view wx:if="{{cartItems.length === 0}}" class="empty">还没有选择硬件</view>
       <view wx:for="{{cartItems}}" wx:key="id" class="cart-item">
@@ -72,15 +72,15 @@
           <text class="cart-line-qty">x {{item.quantity}}</text>
         </view>
         <view class="quantity">
-          <view class="step tap-target" bind:tap="decreaseCart" data-id="{{item.id}}">-</view>
-          <view class="step tap-target" bind:tap="increaseCart" data-id="{{item.id}}">+</view>
+          <view class="step tap-target" bindtap="decreaseCart" data-id="{{item.id}}">-</view>
+          <view class="step tap-target" bindtap="increaseCart" data-id="{{item.id}}">+</view>
         </view>
       </view>
       <view class="drawer-total">
         <text>合计</text>
         <text>￥{{cartTotal}}</text>
       </view>
-      <view class="submit-config tap-target" bind:tap="submitConfig">提交配置</view>
+      <view class="submit-config tap-target" bindtap="submitConfig">提交配置</view>
     </view>
   </view>
 </view>
