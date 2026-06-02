@@ -87,16 +87,6 @@
   font-weight: 700;
 }
 
-.tap-status {
-  margin: 0 0 12rpx;
-  padding: 8rpx 12rpx;
-  border: 2rpx solid #fed7aa;
-  border-radius: 8rpx;
-  background: #ffffff;
-  color: #8a6a48;
-  font-size: 21rpx;
-}
-
 .tap-target {
   position: relative;
   z-index: 2;

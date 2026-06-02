@@ -1,5 +1,4 @@
-const { parseCsv } = require('../../utils/csv')
-const hardwareCsv = require('../../data/hardware')
+const hardwareItems = require('../../data/hardware')
 
 const CATEGORY_ORDER = ['全部', 'CPU', '主板', '显卡', '散热器', '电源', '内存', '硬盘', '机箱', '杂项']
 const SUBMISSION_KEY = 'hardware_config_submissions'
@@ -14,22 +13,19 @@ Page({
     cartItems: [],
     cartCount: 0,
     cartTotal: 0,
-    cartVisible: false,
-    tapStatus: '可点击区域：分类 / 加入 / 购物车'
+    cartVisible: false
   },
 
   onLoad() {
-    this.loadCsvData()
+    this.loadCatalogData()
   },
 
-  loadCsvData() {
-    let csv = hardwareCsv
-    try {
-      csv = wx.getFileSystemManager().readFileSync('/data/hardware.csv', 'utf8')
-    } catch (error) {
-      csv = hardwareCsv
-    }
-    const items = parseCsv(csv)
+  loadCatalogData() {
+    const items = hardwareItems.map((item, index) => ({
+      id: `${index + 1}`,
+      ...item,
+      price: Number(item['硬件价格']) || 0
+    }))
     this.setData({ items }, () => {
       this.refreshCategoryState()
       this.applyCategory()
@@ -63,7 +59,7 @@ Page({
 
   selectCategory(event) {
     const activeCategory = event.currentTarget.dataset.name
-    this.setData({ activeCategory, tapStatus: `已切换到：${activeCategory}` }, () => {
+    this.setData({ activeCategory }, () => {
       this.applyCategory()
     })
   },
@@ -71,8 +67,7 @@ Page({
   addToCart(event) {
     const id = event.currentTarget.dataset.id
     const cart = { ...this.data.cart, [id]: (this.data.cart[id] || 0) + 1 }
-    const item = this.data.items.find((product) => product.id === id)
-    this.setData({ cart, tapStatus: `已加入：${item ? item['硬件名称'] : '商品'}` }, () => this.refreshCart())
+    this.setData({ cart }, () => this.refreshCart())
   },
 
   increaseCart(event) {
@@ -102,11 +97,11 @@ Page({
   },
 
   openCart() {
-    this.setData({ cartVisible: true, tapStatus: '已打开购物车' })
+    this.setData({ cartVisible: true })
   },
 
   closeCart() {
-    this.setData({ cartVisible: false, tapStatus: '已关闭购物车' })
+    this.setData({ cartVisible: false })
   },
 
   submitConfig() {

@@ -12,8 +12,6 @@
       <text class="cart-label">￥{{cartTotal}}</text>
     </view>
   </view>
-  <view class="tap-status">{{tapStatus}}</view>
-
   <view class="shop-layout">
     <view class="category-nav">
       <view
