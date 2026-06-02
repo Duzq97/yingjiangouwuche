@@ -4,14 +4,15 @@
       <image class="brand-icon" src="/assets/huiwen-computer-icon.png" mode="aspectFit" />
       <view class="brand-copy">
         <text class="eyebrow">会稳电脑</text>
-        <text class="title">装机商品清单</text>
+        <text class="title">装机配置清单</text>
       </view>
     </view>
-    <view class="cart-pill tap-target" catchtap="openCart">
+    <view class="cart-pill tap-target" bind:tap="openCart">
       <text class="cart-count">{{cartCount}} 件</text>
       <text class="cart-label">￥{{cartTotal}}</text>
     </view>
   </view>
+  <view class="tap-status">{{tapStatus}}</view>
 
   <view class="shop-layout">
     <view class="category-nav">
@@ -19,7 +20,7 @@
         wx:for="{{categories}}"
         wx:key="name"
         class="tab {{activeCategory === item.name ? 'active' : ''}}"
-        catchtap="selectCategory"
+        bind:tap="selectCategory"
         data-name="{{item.name}}"
       >
         <text class="tab-name">{{item.name}}</text>
@@ -49,18 +50,18 @@
           <text class="description">{{item['硬件描述']}}</text>
           <view class="product-actions">
             <text class="source">商品信息</text>
-            <view class="add tap-target" catchtap="addToCart" data-id="{{item.id}}">加入</view>
+            <view class="add tap-target" bind:tap="addToCart" data-id="{{item.id}}">加入</view>
           </view>
         </view>
       </view>
     </view>
   </view>
 
-  <view wx:if="{{cartVisible}}" class="drawer-mask" catchtap="closeCart">
-    <view class="drawer" catchtap="noop">
+  <view wx:if="{{cartVisible}}" class="drawer-mask" bind:tap="closeCart">
+    <view class="drawer" catch:tap="noop">
       <view class="drawer-header">
         <text class="drawer-title">购物车</text>
-        <text class="close tap-target" catchtap="closeCart">关闭</text>
+        <text class="close tap-target" bind:tap="closeCart">关闭</text>
       </view>
       <view wx:if="{{cartItems.length === 0}}" class="empty">还没有选择硬件</view>
       <view wx:for="{{cartItems}}" wx:key="id" class="cart-item">
@@ -73,15 +74,15 @@
           <text class="cart-line-qty">x {{item.quantity}}</text>
         </view>
         <view class="quantity">
-          <view class="step tap-target" catchtap="decreaseCart" data-id="{{item.id}}">-</view>
-          <view class="step tap-target" catchtap="increaseCart" data-id="{{item.id}}">+</view>
+          <view class="step tap-target" bind:tap="decreaseCart" data-id="{{item.id}}">-</view>
+          <view class="step tap-target" bind:tap="increaseCart" data-id="{{item.id}}">+</view>
         </view>
       </view>
       <view class="drawer-total">
         <text>合计</text>
         <text>￥{{cartTotal}}</text>
       </view>
-      <view class="submit-config tap-target" catchtap="submitConfig">提交配置</view>
+      <view class="submit-config tap-target" bind:tap="submitConfig">提交配置</view>
     </view>
   </view>
 </view>

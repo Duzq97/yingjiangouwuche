@@ -14,7 +14,8 @@ Page({
     cartItems: [],
     cartCount: 0,
     cartTotal: 0,
-    cartVisible: false
+    cartVisible: false,
+    tapStatus: '可点击区域：分类 / 加入 / 购物车'
   },
 
   onLoad() {
@@ -61,7 +62,8 @@ Page({
   },
 
   selectCategory(event) {
-    this.setData({ activeCategory: event.currentTarget.dataset.name }, () => {
+    const activeCategory = event.currentTarget.dataset.name
+    this.setData({ activeCategory, tapStatus: `已切换到：${activeCategory}` }, () => {
       this.applyCategory()
     })
   },
@@ -69,7 +71,8 @@ Page({
   addToCart(event) {
     const id = event.currentTarget.dataset.id
     const cart = { ...this.data.cart, [id]: (this.data.cart[id] || 0) + 1 }
-    this.setData({ cart }, () => this.refreshCart())
+    const item = this.data.items.find((product) => product.id === id)
+    this.setData({ cart, tapStatus: `已加入：${item ? item['硬件名称'] : '商品'}` }, () => this.refreshCart())
   },
 
   increaseCart(event) {
@@ -99,11 +102,11 @@ Page({
   },
 
   openCart() {
-    this.setData({ cartVisible: true })
+    this.setData({ cartVisible: true, tapStatus: '已打开购物车' })
   },
 
   closeCart() {
-    this.setData({ cartVisible: false })
+    this.setData({ cartVisible: false, tapStatus: '已关闭购物车' })
   },
 
   submitConfig() {
