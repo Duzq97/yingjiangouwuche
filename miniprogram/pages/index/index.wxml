@@ -12,6 +12,7 @@
       <text class="cart-label">￥{{cartTotal}}</text>
     </view>
   </view>
+  <view class="admin-entry tap-target" bindtap="goAdmin">小程序后台</view>
   <view class="shop-layout">
     <view class="category-nav">
       <view

@@ -1,0 +1,133 @@
+.admin-page {
+  min-height: 100vh;
+  padding: 20rpx 18rpx 80rpx;
+  background: #fff7ed;
+  box-sizing: border-box;
+}
+
+.admin-header,
+.order-head,
+.order-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16rpx;
+}
+
+.admin-header {
+  padding: 22rpx 20rpx;
+  margin-bottom: 18rpx;
+  border: 3rpx solid #f1c796;
+  border-radius: 8rpx;
+  background: #ffffff;
+  box-shadow: 0 6rpx 0 rgba(194, 65, 12, 0.10);
+}
+
+.eyebrow,
+.title,
+.order-id,
+.order-time,
+.item-name,
+.item-meta,
+.order-total text,
+.item-price text {
+  display: block;
+}
+
+.eyebrow,
+.order-time,
+.item-meta,
+.item-price text:last-child {
+  color: #8a6a48;
+  font-size: 22rpx;
+}
+
+.title {
+  margin-top: 4rpx;
+  color: #3b260f;
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+.clear-btn {
+  min-width: 96rpx;
+  padding: 12rpx 18rpx;
+  border: 3rpx solid #9a3412;
+  border-radius: 8rpx;
+  background: #f97316;
+  color: #ffffff;
+  font-size: 24rpx;
+  font-weight: 700;
+  text-align: center;
+  box-shadow: 0 4rpx 0 #9a3412;
+}
+
+.empty {
+  padding: 60rpx 20rpx;
+  border: 3rpx solid #f1c796;
+  border-radius: 8rpx;
+  background: #ffffff;
+  color: #8a6a48;
+  font-size: 26rpx;
+  text-align: center;
+}
+
+.order-card {
+  padding: 18rpx;
+  margin-bottom: 16rpx;
+  border: 3rpx solid #f3d6b6;
+  border-radius: 8rpx;
+  background: #ffffff;
+  box-shadow: 0 4rpx 0 rgba(194, 65, 12, 0.08);
+}
+
+.order-head {
+  padding-bottom: 14rpx;
+  border-bottom: 2rpx dashed #f3d6b6;
+}
+
+.order-id {
+  color: #3b260f;
+  font-size: 28rpx;
+  font-weight: 700;
+}
+
+.order-total {
+  flex: none;
+  text-align: right;
+}
+
+.order-total text:last-child,
+.item-price text:first-child {
+  color: #c2410c;
+  font-size: 28rpx;
+  font-weight: 700;
+}
+
+.order-item {
+  padding: 14rpx 0;
+  border-bottom: 1rpx solid #ffedd5;
+}
+
+.order-item:last-child {
+  border-bottom: 0;
+}
+
+.item-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.item-name {
+  color: #3b260f;
+  font-size: 26rpx;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item-price {
+  flex: none;
+  text-align: right;
+}

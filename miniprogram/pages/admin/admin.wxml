@@ -1,0 +1,37 @@
+<view class="admin-page">
+  <view class="admin-header">
+    <view>
+      <text class="eyebrow">会稳电脑</text>
+      <text class="title">配置单后台</text>
+    </view>
+    <view class="clear-btn" bindtap="clearSubmissions">清空</view>
+  </view>
+
+  <view wx:if="{{submissions.length === 0}}" class="empty">
+    暂无配置单，请先在主页面提交配置。
+  </view>
+
+  <view wx:for="{{submissions}}" wx:key="id" class="order-card">
+    <view class="order-head">
+      <view>
+        <text class="order-id">{{item.id}}</text>
+        <text class="order-time">{{item.createdAtText}}</text>
+      </view>
+      <view class="order-total">
+        <text>{{item.totalCount}} 件</text>
+        <text>￥{{item.totalPrice}}</text>
+      </view>
+    </view>
+
+    <view wx:for="{{item.items}}" wx:for-item="product" wx:key="name" class="order-item">
+      <view class="item-info">
+        <text class="item-name">{{product.name}}</text>
+        <text class="item-meta">{{product.category}}</text>
+      </view>
+      <view class="item-price">
+        <text>￥{{product.price}}</text>
+        <text>x {{product.quantity}}</text>
+      </view>
+    </view>
+  </view>
+</view>

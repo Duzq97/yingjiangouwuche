@@ -143,6 +143,12 @@ Page({
     this.setData({ cartVisible: true })
   },
 
+  goAdmin: function () {
+    wx.navigateTo({
+      url: '/pages/admin/admin'
+    })
+  },
+
   closeCart: function () {
     this.setData({ cartVisible: false })
   },

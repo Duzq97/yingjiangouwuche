@@ -93,6 +93,19 @@
   pointer-events: auto;
 }
 
+.admin-entry {
+  margin: 0 0 12rpx;
+  padding: 14rpx 18rpx;
+  border: 3rpx solid #f1c796;
+  border-radius: 8rpx;
+  background: #ffffff;
+  color: #c2410c;
+  font-size: 24rpx;
+  font-weight: 700;
+  text-align: center;
+  box-shadow: 0 4rpx 0 rgba(194, 65, 12, 0.10);
+}
+
 .shop-layout {
   display: flex;
   gap: 12rpx;
