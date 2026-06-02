@@ -64,9 +64,13 @@
       </view>
       <view wx:if="{{cartItems.length === 0}}" class="empty">还没有选择硬件</view>
       <view wx:for="{{cartItems}}" wx:key="id" class="cart-item">
-        <view>
+        <view class="cart-info">
           <text class="cart-name">{{item['硬件名称']}}</text>
-          <text class="cart-meta">￥{{item.price}} x {{item.quantity}}</text>
+          <text class="cart-meta">{{item['硬件分类']}}</text>
+        </view>
+        <view class="cart-side">
+          <text class="cart-line-price">￥{{item.price}}</text>
+          <text class="cart-line-qty">x {{item.quantity}}</text>
         </view>
         <view class="quantity">
           <button class="step" bindtap="decreaseCart" data-id="{{item.id}}">-</button>
